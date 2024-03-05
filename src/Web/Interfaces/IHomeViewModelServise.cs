@@ -4,6 +4,6 @@ namespace Web.Interfaces
 {
     public interface IHomeViewModelServise
     {
-        Task<HomeViewModel> GetHomeViewModelAsync(int? categoryId, int? brandId);
+        Task<HomeViewModel> GetHomeViewModelAsync(int? categoryId, int? brandId, int pageId);
     }
 }
