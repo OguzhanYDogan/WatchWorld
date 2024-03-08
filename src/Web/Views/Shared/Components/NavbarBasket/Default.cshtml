@@ -1,9 +1,9 @@
 ﻿@model BasketViewModel
 
 <ul class="navbar-nav">
-    <li class="nav-item border rounded bg-light">
+    <li class="nav-item text-dark">
         <a class="nav-link text-dark" asp-controller="Basket" asp-action="Index">
-            <i class="fa-solid fa-cart-shopping me-2"></i> Basket <span id="navbarBasketCount" class="badge bg-secondary">@Model.TotalItems</span>
+            <i class="fa-solid fa-basket-shopping"></i> Basket <span id="navbarBasketCount" class="badge bg-primary">@Model.TotalItems</span>
         </a>
     </li>
 </ul>

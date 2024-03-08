@@ -119,6 +119,8 @@
 
             $.post(url, { productId }).then(data => {
                 console.log(data);
+                successMessage("Added to basket successfully");
+                $("#navbarBasketCount").text(data.totalItems);
             });
         })
     </script>
