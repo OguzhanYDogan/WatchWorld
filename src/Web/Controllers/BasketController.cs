@@ -32,5 +32,21 @@ namespace Web.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> RemoveItem(int productId)
+        {
+            await _basketViewModelService.RemoveItemAsync(productId);
+            TempData["Message"] = "Item removed from the basket.";
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update([ModelBinder(Name = "quantities")] Dictionary<int, int> quantities)
+        {
+            await _basketViewModelService.SetQuantitesAsync(quantities);
+            TempData["Message"] = "Basket is updated successfully";
+            return RedirectToAction("Index");
+        }
+
     }
 }
