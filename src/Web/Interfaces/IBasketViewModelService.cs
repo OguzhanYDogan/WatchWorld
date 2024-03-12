@@ -15,5 +15,7 @@ namespace Web.Interfaces
         Task<BasketViewModel> SetQuantitesAsync(Dictionary<int, int> quantites);
 
         Task TransferBasketAsync();
+
+        Task CheckOutAsync(string street, string city, string? state, string country, string zipCode);
     }
 }
