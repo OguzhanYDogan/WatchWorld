@@ -15,7 +15,7 @@ namespace Web.Models
         public string City { get; set; } = null!;
 
         [MaxLength(60)]
-        public string State { get; set; } = null!;
+        public string? State { get; set; }
 
         [Required]
         [MaxLength(90)]
