@@ -1,0 +1,156 @@
+﻿@model CheckoutViewModel
+@{
+    ViewBag.Title = "Checkout";
+}
+
+<div class="row g-5">
+    <div class="col-md-6 col-lg-5 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-primary">Your cart</span>
+            <span class="badge bg-primary rounded-pill">@Model.Basket!.TotalItems</span>
+        </h4>
+        <ul class="list-group mb-3">
+            @foreach (var item in Model.Basket!.Items)
+            {
+                <li class="list-group-item d-flex justify-content-between align-items-center lh-sm">
+                    <img src="~/img/products/@item.PictureUri" width="50px" height="50px" alt="" />
+                    <div class="ms-3">
+                        <p class="my-0">@item.ProductName</p>
+                    </div>
+                    <span class="text-muted ms-2">@item.TotalPrice.ToString("c2")</span>
+                </li>
+            }
+            <li class="list-group-item d-flex justify-content-between py-3">
+                <span>Total (USD)</span>
+                <strong>@Model.Basket.TotalPrice.ToString("c2")</strong>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-6 col-lg-7">
+        <h4 class="mb-3">Billing address</h4>
+        <form asp-action="Checkout" method="post">
+            <div class="row g-3">
+
+                <div class="col-12">
+                    <label asp-for="Street" class="form-label"></label>
+                    <input type="text" class="form-control"
+                           asp-for="Street" placeholder="1234 Main St">
+                    <span class="text-danger" asp-validation-for="Street"></span>
+                </div>
+
+                <div class="col-12">
+                    <label asp-for="City" class="form-label"></label>
+                    <input type="text" class="form-control" asp-for="City" placeholder="City">
+                    <span class="text-danger" asp-validation-for="City"></span>
+                </div>
+
+                <div class="col-md-5">
+                    <label asp-for="Country" class="form-label">Country</label>
+                    <select class="form-select" asp-for="Country">
+                        <option value="">Choose...</option>
+                        <option value="United States">United States</option>
+                    </select>
+                    <span class="text-danger" asp-validation-for="Country"></span>
+                </div>
+
+                <div class="col-md-4">
+                    <label asp-for="State" class="form-label"></label>
+                    <select class="form-select" asp-for="State">
+                        <option value="">Choose...</option>
+                        <option value="Alabama">Alabama</option>
+                        <option value="Alaska">Alaska</option>
+                        <option value="Arizona">Arizona</option>
+                        <option value="Arkansas">Arkansas</option>
+                        <option value="California">California</option>
+                        <option value="Colorado">Colorado</option>
+                        <option value="Connecticut">Connecticut</option>
+                        <option value="Delaware">Delaware</option>
+                        <option value="Florida">Florida</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Hawaii">Hawaii</option>
+                        <option value="Idaho">Idaho</option>
+                        <option value="Illinois">Illinois</option>
+                        <option value="Indiana">Indiana</option>
+                        <option value="Iowa">Iowa</option>
+                        <option value="Kansas">Kansas</option>
+                        <option value="Kentucky">Kentucky</option>
+                        <option value="Louisiana">Louisiana</option>
+                        <option value="Maine">Maine</option>
+                        <option value="Maryland">Maryland</option>
+                        <option value="Massachusetts">Massachusetts</option>
+                        <option value="Michigan">Michigan</option>
+                        <option value="Minnesota">Minnesota</option>
+                        <option value="Mississippi">Mississippi</option>
+                        <option value="Missouri">Missouri</option>
+                        <option value="Montana">Montana</option>
+                        <option value="Nebraska">Nebraska</option>
+                        <option value="Nevada">Nevada</option>
+                        <option value="New Hampshire">New Hampshire</option>
+                        <option value="New Jersey">New Jersey</option>
+                        <option value="New Mexico">New Mexico</option>
+                        <option value="New York">New York</option>
+                        <option value="North Carolina">North Carolina</option>
+                        <option value="North Dakota">North Dakota</option>
+                        <option value="Ohio">Ohio</option>
+                        <option value="Oklahoma">Oklahoma</option>
+                        <option value="Oregon">Oregon</option>
+                        <option value="Pennsylvania">Pennsylvania</option>
+                        <option value="Rhode Island">Rhode Island</option>
+                        <option value="South Carolina">South Carolina</option>
+                        <option value="South Dakota">South Dakota</option>
+                        <option value="Tennessee">Tennessee</option>
+                        <option value="Texas">Texas</option>
+                        <option value="Utah">Utah</option>
+                        <option value="Vermont">Vermont</option>
+                        <option value="Virginia">Virginia</option>
+                        <option value="Washington">Washington</option>
+                        <option value="West Virginia">West Virginia</option>
+                        <option value="Wisconsin">Wisconsin</option>
+                        <option value="Wyoming">Wyoming</option>
+                    </select>
+                    <span class="text-danger" asp-validation-for="State"></span>
+                </div>
+
+                <div class="col-md-3">
+                    <label asp-for="ZipCode" class="form-label"></label>
+                    <input type="text" class="form-control" asp-for="ZipCode">
+                    <span class="text-danger" asp-validation-for="ZipCode"></span>
+                </div>
+            </div>
+
+            <hr class="my-4">
+
+            <h4 class="mb-3">Payment</h4>
+
+            <div class="row gy-3">
+                <div class="col-md-6">
+                    <label asp-for="CCHolder" class="form-label"></label>
+                    <input type="text" class="form-control" asp-for="CCHolder" placeholder="">
+                    <div class="text-muted">Full name as displayed on card</div>
+                    <span class="text-danger" asp-validation-for="CCHolder"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="CCNumber" class="form-label"></label>
+                    <input type="text" class="form-control" asp-for="CCNumber">
+                    <span class="text-danger" asp-validation-for="CCNumber"></span>
+                </div>
+
+                <div class="col-md-3">
+                    <label asp-for="CCExpiration" class="form-label"></label>
+                    <input type="text" class="form-control" asp-for="CCExpiration" placeholder="mm/yy">
+                    <span class="text-danger" asp-validation-for="CCExpiration"></span>
+                </div>
+
+                <div class="col-md-3">
+                    <label asp-for="CCCvv" class="form-label"></label>
+                    <input type="text" class="form-control" asp-for="CCCvv">
+                    <span class="text-danger" asp-validation-for="CCCvv"></span>
+                </div>
+            </div>
+
+            <hr class="my-4">
+
+            <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+        </form>
+    </div>

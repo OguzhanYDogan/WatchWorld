@@ -31,6 +31,7 @@ namespace Web.Models
         public string CCHolder { get; set; } = null!;
 
         [Required]
+        [CreditCard]
         [Display(Name = "Credit card number")]
         public string CCNumber { get; set; } = null!;
 

@@ -10,7 +10,7 @@ namespace ApplicationCore.Entities
     {
         public string BuyerId { get; set; } = null!;
 
-        public DateTimeOffset OrderDate { get; set; } = DateTimeOffset.Now;
+        public DateTimeOffset OrderDate { get; set; } = DateTimeOffset.Now.UtcDateTime;
 
         public Address ShipToAdress { get; set; } = null!;
 
